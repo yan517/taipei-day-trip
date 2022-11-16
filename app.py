@@ -1,7 +1,17 @@
 from flask import *
+from data.api.attraction import attractionApp
+from extensions import db
+from dotenv import load_dotenv
+import os
+
 app=Flask(__name__)
+load_dotenv()
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DBCONN_STR')
+
+db.init_app(app)
 
 # Pages
 @app.route("/")
@@ -17,4 +27,6 @@ def booking():
 def thankyou():
 	return render_template("thankyou.html")
 
-app.run(port=3000)
+app.register_blueprint(attractionApp)
+
+app.run(port=3000)		
