@@ -9,7 +9,7 @@ mydb = mysql.connector.connect(host=os.getenv('DBHOST'),
 
 try:
     cursor = mydb.cursor()
-    cursor.execute('CREATE DATABASE taipeiDayTripDB;')  
+    cursor.execute('CREATE DATABASE taipeidaytripdb;')  
 finally:
     # closing database connection.
     cursor.close()                                     
