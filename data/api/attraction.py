@@ -38,21 +38,28 @@ def getAttractions():
 	if 'page' in request.args:
 		page = int(request.args.get("page"))
 		result = []
-		pageSize = 12
-		start = page*pageSize
+		pageSize = 13
+		start = page*(pageSize-1)
+		hasNextPage = False
 		if 'keyword' in request.args:
 			keyword = request.args.get("keyword")
 			data = Attraction.query.filter(or_(Attraction.name.like('%'+keyword+'%'), Attraction.category == keyword)).offset(start).limit(pageSize).all()
+			if len(data) == 13:
+				hasNextPage = True
 			if data:
-				for item in data:
-					result.append(createDataObj(item))			
-			return make_response(jsonify({"data":result,"nextPage": page+1 if len(result) == pageSize else None}),200)
+				for idx,item in enumerate(data):
+					if idx != 12:
+						result.append(createDataObj(item))			
+			return make_response(jsonify({"data":result,"nextPage": page+1 if hasNextPage else None}),200)
 		else:
 			data = Attraction.query.offset(start).limit(pageSize).all()
+			if len(data) == 13:
+				hasNextPage = True
 			if data:
-				for item in data:
-					result.append(createDataObj(item))
-			return make_response(jsonify({"data":result,"nextPage": page+1 if len(result) == pageSize else None}),200)
+				for idx,item in enumerate(data):
+					if idx != 12:
+						result.append(createDataObj(item))
+			return make_response(jsonify({"data":result,"nextPage": page+1 if hasNextPage else None}),200)
 	else:
 		return make_response(jsonify({"error": True, "message": "Internal server error"}),500)
 
