@@ -335,7 +335,7 @@ input:focus{
 		max-width: 100%;
 		object-fit: cover;
 		vertical-align: middle;
-		border-radius: 3px;
+		border-radius: 5px;
 	}
 
 	.grid-container-4 {
@@ -433,6 +433,7 @@ input:focus{
 		min-height: 235px;
 		width: 321px;
 		min-width: 100%;
+		border-radius: 5px;
 	}
 
 	.grid-container-4 {
