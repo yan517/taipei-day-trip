@@ -2,14 +2,17 @@ let nextPage = -1;
 const loadingObserver = document.querySelector('.footer')
 let page = 0
 let keyword;
-let notloading = true;
+let loading = true;
 
 //--------------------------------- Load More ----------------------------------
 const callback = async ([entry]) => {
-	if (page == null || !notloading) {
+	console.log("footer");
+	console.log(loading);
+	if (page == null || loading) {
 		return;
 	};
 	if (entry && entry.isIntersecting) {
+		loading = true;
 		let result = null;
 		if(keyword){
 			try{
@@ -17,12 +20,13 @@ const callback = async ([entry]) => {
 				page =  result.nextPage;
 				result =  result.data;
 				create(result);	
+				loading = false;
+				console.log("keyword: " +loading);
 			}catch(err){
 				console.log(err);
 			}
 		}
-		else
-			getPageArractionsData(page);
+		else getPageArractionsData(page);
 	}
 } 
 let observer = new IntersectionObserver(callback)
@@ -37,18 +41,20 @@ const getArractionsData = page => fetch('http://18.181.123.151:3000/api/attracti
 async function getPageArractionsData(pageNum) {
 	let result = null;
 	try{
+		console.log("ArractionsData1: " +loading);
 		result = await getArractionsData(pageNum);
 		page = result.nextPage;
 		result = result.data;
 		create(result);
-		notloading = true;
+		loading = false;
+		console.log("ArractionsData2: " +loading);
 	}catch(err){
 		console.log(err);
 	}
 }
 
 function initLoad(){
-	notloading = false;
+	console.log("init");
 	getPageArractionsData(page);
 }
 initLoad();
@@ -75,7 +81,7 @@ const getArractionsDatabyCat = (category) => fetch(`http://18.181.123.151:3000/a
 
 async function searchByCategory(){
 	page = 0;
-	notloading = false;
+	loading = true;
 	const e = document.querySelectorAll('.grid-item-4');
 	e.forEach((element)=>{
 		element.remove();
@@ -88,7 +94,7 @@ async function searchByCategory(){
 		
 		result = result.data;
 		create(result);
-		notloading = true;
+		loading = false;
 	}catch(err){
 		console.log(err);
 	} 
