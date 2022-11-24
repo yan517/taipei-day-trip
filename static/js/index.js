@@ -41,10 +41,17 @@ async function getPageArractionsData(pageNum) {
 		page = result.nextPage;
 		result = result.data;
 		create(result);
+		notloading = true;
 	}catch(err){
 		console.log(err);
 	}
 }
+
+function initLoad(){
+	notloading = false;
+	getPageArractionsData(page);
+}
+initLoad();
 
 //--------------------------------- Fectch Category Data ----------------------------------
 const categoryData = () => fetch('http://18.181.123.151:3000/api/categories')
@@ -174,3 +181,4 @@ allCatBtn.addEventListener('click', (event) => {
 	document.querySelector('#categoryMenu').style.display = "none";
  }
 });
+
