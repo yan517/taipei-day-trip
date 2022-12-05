@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台北一日遊</title>
+    <link href="{{ url_for('static', filename='./css/style.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="clearfix attractionTitleBar container">
+        <div class="webtitle" style="float:left;">台北一日遊</div>
+        <ul class="navRightCorner">
+            <li id="item1"><a href="#">預定行程</a></li>
+            <li id="item2"><a href="#">登入/註冊</a></li>
+        </ul>
+    </div>
+    <div class="separateLine"></div>
+    <div class="container slideshowSection">
+        <div class="slideshow">
+            <img id="slideImg">
+            <a class="prev"  onclick="plusSlides(-1)">
+                <img src="{{ url_for('static', filename='./image/btn_leftArrow.svg') }}" />
+            </a>
+            <a class="next" onclick="plusSlides(1)">
+                <img src="{{ url_for('static', filename='./image/btn_rightArrow.svg') }}" />
+            </a>
+            <div id="dotSection"></div>
+        </div>
+        <div class="attractInfo">
+            <div id="name" class="attractname"></div>
+            <div id="categoryMrt" class="categorymrt"></div>
+            <div class="bookingPlanDiv">
+                <div style="padding: 15px 0 0 20px;">
+                    <div class="bookingPlan">訂購導覽行程</div>
+                    <div class="bookingPlan-1">以此景點為中心的一日行程，帶您探索城市角落故事</div>
+                    <div class="bookingPlan-2"><span style="font-weight: 700;">選擇日期：</span><input class="datepicker" type="date" data-date-format='yy-mm-dd' id="planDate" name="planDate" ></div>
+                    <div class="bookingPlan-2" style="display: flex; align-items: center;"><span style="font-weight: 700;">選擇時間：</span>
+                        <input class="radioBtn" type="radio" id="morning" name="radioGp" value="上半天" checked="checked"> <span style="margin-right: 10px;">上半天</span>
+                        <input class="radioBtn" type="radio" id="afternoon" name="radioGp" value="下半天"> <span>下半天</span>
+                    </div>
+                    <div class="bookingPlan-2"><span style="font-weight: 700;">導覽費用：</span> 新台幣 <span id="price">2000</span> 元</div>
+                    <button class="startToBooking">開始預約行程</button>
+                </div>
+            </div>
+        </div><br>
+   </div><br><br>
+   <div class="container" style="min-height: 632px;">
+        <div id="description"></div>
+        <div id="addressTitle">景點地址：</div>
+        <div id="address"></div>
+        <div id="transportsTitle">交通方式：</div>
+        <div id="transport"></div>
+   </div>
+   
+    <footer class="footer">COPYRIGHT © 2022 台北一日遊</footer>
+    <script src="{{ url_for('static', filename='./js/attraction.js') }}"></script>
+    <script type="text/javascript">
+        setId('{{ id }}')
+        getArractionsData(getId());
+    </script>
+</body>
+</html>

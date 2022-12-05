@@ -21,7 +21,6 @@ const callback = async ([entry]) => {
 				result =  result.data;
 				create(result);	
 				loading = false;
-				console.log("keyword: " +loading);
 			}catch(err){
 				console.log(err);
 			}
@@ -41,20 +40,17 @@ const getArractionsData = page => fetch('http://18.181.123.151:3000/api/attracti
 async function getPageArractionsData(pageNum) {
 	let result = null;
 	try{
-		console.log("ArractionsData1: " +loading);
 		result = await getArractionsData(pageNum);
 		page = result.nextPage;
 		result = result.data;
 		create(result);
 		loading = false;
-		console.log("ArractionsData2: " +loading);
 	}catch(err){
 		console.log(err);
 	}
 }
 
 function initLoad(){
-	console.log("init");
 	getPageArractionsData(page);
 }
 initLoad();
@@ -121,13 +117,16 @@ function create(result){
 	
 	for (let i = 0; i < result.length; i++){
 		let fileUrl = result[i].images[0];
-		createLargerDom(result[i].name, result[i].mrt, fileUrl, result[i].category);
+		createLargerDom(result[i].name, result[i].mrt, fileUrl, result[i].category, result[i].id);
 	}
 }
 
-function createLargerDom(name,mrt,url,category){
+function createLargerDom(name,mrt,url,category,id){
 	let row = document.getElementById("largerCon");
 	let lgDiv = document.createElement("div");
+	lgDiv.addEventListener("click", ()=>{
+		window.location.href = `http://18.181.123.151:3000/attraction/${id}`;
+	});
 	lgDiv.className = "grid-item-4";
 	let lgimg = document.createElement('img');
 	lgimg.src = url;
