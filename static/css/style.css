@@ -31,6 +31,18 @@ html,body{
 	padding: 20px 0px 20px 0px;
 }
 
+.separateLine{
+	border-bottom: solid 1px #E8E8E8;
+	margin-bottom: 30px;
+}
+
+.attractionTitleBar{
+	height: 35px;
+    position: relative;
+    top: 5px;
+	padding: 20px 0px 10px 0px;
+}
+
 .webtitle{
 	font-family: 'Noto Sans TC';
 	font-style: normal;
@@ -304,6 +316,7 @@ input:focus{
 	.slideshowSection{
 		display: grid;
 		grid-template-columns: 50% 50%;
+		border-bottom: solid 1px #E8E8E8;
 	}
 
 	.prev, .next {
@@ -596,6 +609,7 @@ input:focus{
 	.slideshowSection{
 		display: grid;
 		grid-template-columns: 50% 50%;
+		border-bottom: solid 1px #E8E8E8;
 	}
 
 	.prev, .next {
@@ -750,7 +764,7 @@ input:focus{
 	}	
 }
 
- @media (min-width: 361px) and (max-width: 600px) {
+ @media (min-width: 360px) and (max-width: 600px) {
 	.grid-item-4 img{
 		object-fit: cover;
 		vertical-align: middle;
@@ -862,6 +876,7 @@ input:focus{
 	.slideshowSection{
 		display: grid;
 		grid-template-columns: 100%;
+		border-bottom: solid 1px #E8E8E8;
 	}
 
 	.prev, .next {

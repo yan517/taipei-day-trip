@@ -11,7 +11,7 @@ function getId() {
     return id;
 }
 
-const attractionData = (id) => fetch(`http://18.181.123.151:3000/api/attraction/${id}`)
+const attractionData = (id) => fetch(`http://127.0.0.1:3000/api/attraction/${id}`)
     .then((response)=>response.json())
 
 async function getArractionsData(id) {
