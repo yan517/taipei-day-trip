@@ -10,7 +10,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DBCONN_STR')
 db = SQLAlchemy(app)
 
-class Attraction(db.Model):
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(255),nullable=False)
+    password = db.Column(db.String(255),nullable=False)
+    email = db.Column(db.String(255), unique=True ,nullable=False)
+
+""" class Attraction(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(80), unique=True)
     lat = db.Column(db.Numeric(20,6))
@@ -25,11 +32,11 @@ class Attraction(db.Model):
 class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     attraction_id = db.Column(db.Integer, db.ForeignKey('attraction.id'), nullable=False)
-    url = db.Column(db.String(1000), nullable=False)
+    url = db.Column(db.String(1000), nullable=False) """
 
 with app.app_context():
     db.create_all()
-    with open('./taipei-attractions.json',"r",encoding="utf-8") as f:
+"""     with open('./taipei-attractions.json',"r",encoding="utf-8") as f:
         data = json.load(f)
         attracts = []
         for item in data['result']['results']:
@@ -40,4 +47,4 @@ with app.app_context():
                     imgs.append(Image(url="https://"+i))
             attracts.append(Attraction(name=item['name'], lat=item['latitude'],lng=item['longitude'], description=item['description'], address=item['address'],mrt=item['MRT'], category=item['CAT'],transport=item['direction'], images=imgs))
     db.session.add_all(attracts)
-    db.session.commit()
+    db.session.commit() """

@@ -186,4 +186,3 @@ allCatBtn.addEventListener('click', (event) => {
 	document.querySelector('#categoryMenu').style.display = "none";
  }
 });
-
