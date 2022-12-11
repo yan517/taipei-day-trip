@@ -79,6 +79,8 @@ html,body{
 	background: no-repeat;
 	background-image: url("../image/welcome.svg");
 	background-size: cover;
+	position: relative;
+	z-index: 1;
 }
 
 .bakstatment{
@@ -208,6 +210,113 @@ input:focus{
     outline: none;
 }
 
+.fade {
+	animation-name: fade;
+	animation-duration: 1.5s;
+	animation-direction: linear;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+
+#logout{
+	display: none;
+}
+
+#signInFrame{
+	display: none;
+	height: auto;
+	width: 340px;
+	background-color: #F8F8F8;
+	border-radius: 5px;
+}
+
+#signInUpFrame{
+	display: flex;
+	justify-content: center;
+	position: absolute;
+    width: 100%;
+	height: auto;
+    top: 95px;
+}
+
+.littleBar{
+	width: 340px; 
+	height: 10px; 
+	border-radius: 5px 5px 0px 0px;
+    background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
+}
+
+.loginText{
+	text-align: center;
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    color: #666666;
+    margin: 15px 0px;
+}
+
+#overlay {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #000000;
+	display: none;
+    z-index: 0.5;
+    opacity: 0.25;
+}
+
+#dialogClose{
+	position: relative;
+    left: 60px;
+    bottom: 5px;
+}
+
+.loginInput{
+	width: 310px;
+    height: 47px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input.loginInput{
+    text-indent: 15px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #757575;
+    line-height: 13px;
+}
+
+#loginBtn{
+	background: #448899;
+    border-radius: 5px;
+    border: none;
+    width: 310px;
+    height: 47px;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 16px;
+    color: #FFFFFF;
+	margin-bottom: 15px;
+}
+
+.changeToSignUp{
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 13px;
+	color: #666666;
+	margin-bottom: 15px;
+}
+
 @media (min-width: 1202px) and (max-width: 1920px) { 
 	.grid-item-4 img{
 		max-width: 270px;
@@ -317,6 +426,8 @@ input:focus{
 		display: grid;
 		grid-template-columns: 50% 50%;
 		border-bottom: solid 1px #E8E8E8;
+		z-index: 1;
+		position: relative;
 	}
 
 	.prev, .next {
@@ -610,6 +721,8 @@ input:focus{
 		display: grid;
 		grid-template-columns: 50% 50%;
 		border-bottom: solid 1px #E8E8E8;
+		z-index: 1;
+		position: relative;
 	}
 
 	.prev, .next {
@@ -877,6 +990,8 @@ input:focus{
 		display: grid;
 		grid-template-columns: 100%;
 		border-bottom: solid 1px #E8E8E8;
+		z-index: 1;
+		position: relative;
 	}
 
 	.prev, .next {

@@ -32,6 +32,7 @@ function createPicSection(result){
     document.querySelector('input#planDate.datepicker').dataset.dateFormat = 'YYYY-MM-DD';
     let sliderSection = document.getElementById("slideImg");
     sliderSection.src = result.images[slideIndex];
+    sliderSection.classList.add("fade");
     let name = document.getElementById("name");
     name.textContent = result.name;
     let transport = document.getElementById("transport");
@@ -62,6 +63,9 @@ function plusSlides(n) {
 }
 
 function showSlides(n) {
+    let slides = document.getElementById("slideImg");
+    slides.style.display = "none";
+    let sliderSection = document.getElementById("slideImg");
     if (slideIndex >= imageArr.length){
         slideIndex = 0;
     }else if (slideIndex < 0){
@@ -71,8 +75,11 @@ function showSlides(n) {
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
-    document.getElementById("slideImg").src = imageArr[slideIndex];
+    sliderSection.src = imageArr[slideIndex];
     dots[slideIndex].className += " active";
+    setTimeout(function () {
+        slides.style.display = "block";
+    }, 0.01);
 }
 
 let radiobtn = document.querySelectorAll('input[name="radioGp"]');
@@ -84,4 +91,8 @@ for (let i = 0; i < radiobtn.length; i++) {
         else
             document.querySelector("#price").textContent = "2500";
     });
+}
+
+function backTohomePage(){
+    window.location.href = `http://18.181.123.151:3000/`;
 }
