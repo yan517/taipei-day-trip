@@ -110,4 +110,4 @@ setTimeout(function () {
         let totalPrice = document.getElementById("totalPrice");
         totalPrice.textContent = sum;
     }
-},1000);
+},200);

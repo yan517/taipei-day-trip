@@ -85,7 +85,8 @@ loginBtn.addEventListener('click',(event) => {
     }).then((response) => response.json())
     .then(data=>{
         if(data["ok"]){
-            window.location.href = "http://18.181.123.151:3000";
+            location.reload();
+            return false;
         }else{
             document.querySelector('#loginMessage').textContent = data["message"];
             document.querySelector('#loginMessage').style.display = "block";
@@ -138,7 +139,8 @@ logout.addEventListener('click', (event) =>{
     }).then((response) => response.json())
     .then(data=>{
         if(data["ok"]){
-            window.location.href = "http://18.181.123.151:3000";
+            location.reload();
+            return false;
         }
     })
 	logO();
