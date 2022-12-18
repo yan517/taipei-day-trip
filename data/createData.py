@@ -3,6 +3,7 @@ import json
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
+from sqlalchemy import and_
 
 app = Flask(__name__)
 load_dotenv()
@@ -13,13 +14,14 @@ db = SQLAlchemy(app)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(255),nullable=False)
+    """name = db.Column(db.String(255),nullable=False)
     password = db.Column(db.String(255),nullable=False)
-    email = db.Column(db.String(255), unique=True ,nullable=False)
+    email = db.Column(db.String(255), unique=True ,nullable=False)"""
+    booking = db.relationship('Booking', backref='user')
 
-""" class Attraction(db.Model):
+class Attraction(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(80), unique=True)
+    """ name = db.Column(db.String(80), unique=True)
     lat = db.Column(db.Numeric(20,6))
     lng = db.Column(db.Numeric(20,6))
     description = db.Column(db.String(8000))
@@ -27,12 +29,21 @@ class User(db.Model):
     mrt =  db.Column(db.String(100))
     category = db.Column(db.String(100))
     transport = db.Column(db.String(1000))
-    images = db.relationship('Image', backref='attraction')
+    images = db.relationship('Image', backref='attraction') """
+    booking = db.relationship('Booking', backref='attraction')
     
-class Image(db.Model):
+"""class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     attraction_id = db.Column(db.Integer, db.ForeignKey('attraction.id'), nullable=False)
     url = db.Column(db.String(1000), nullable=False) """
+
+class Booking(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    date = db.Column(db.DateTime(50),nullable=False)
+    time = db.Column(db.String(50),nullable=False)
+    price = db.Column(db.String(50),nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    attraction_id = db.Column(db.Integer, db.ForeignKey('attraction.id'), nullable=False)
 
 with app.app_context():
     db.create_all()

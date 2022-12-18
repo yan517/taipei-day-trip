@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台北一日遊</title>
+    <link href="{{ url_for('static', filename='./css/style.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="overlay"></div>
+    <div class="clearfix attractionTitleBar container">
+        <div onclick="backTohomePage()" class="webtitle" style="float:left;">台北一日遊</div>
+        <ul class="navRightCorner">
+            <li id="appointment"><a href="#">預定行程</a></li>
+            <li id="loginSignup"><a href="#">登入/註冊</a></li>
+            <li id="logout"><a href="#">登出</a></li>
+        </ul>
+    </div>
+    <div id="signInUpFrame">
+        <div id="signInFrame">
+            <div class="littleBar"></div>
+            <div class="loginText"><span id="titleOfDialog">登入會員帳號</span><span id="dialogClose"><img src="{{ url_for('static', filename='./image/icon_close.svg') }}"></span></div>
+            <div style="text-align: center;">
+                <p id="signUpName" style="display: none;"><input class="loginInput" type="text" placeholder="輸入姓名"/></p>
+                <p><input class="loginInput" type="text" placeholder="輸入電子信箱"/></p>
+                <p><input class="loginInput" type="password" placeholder="輸入密碼"/></p>
+                <p><button id="loginBtn">登入帳戶</button></p>
+                <p id="loginMessage" style="margin-bottom: 10px; display: none;">hihi</p>
+                <p class="changeToSignUp"><span id="haveAcOrNot">還沒有帳戶？</span><a id="signUp" href="#">點此註冊</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="separateLine"></div>
+    <div class="container">
+        <div class="sectionContainer">
+            <div class="bookingPageNameDisplay">您好，<span id="userName"></span>，待預訂的行程如下：</div>
+            <div id="noRecord">目前沒有任何待預訂的行程</div>
+            <div id="allBookingInfo">
+                <div id="bookingSection"></div>
+                <div id="contactInfo" style="display: block;">
+                    <p class="bookingPageNameDisplay">您的聯絡資訊</p>
+                    <p class="sameSty">
+                        聯絡姓名： <input class="bookingTextInput" type="text">
+                    </p>
+                    <p class="sameSty">
+                        連絡信箱： <input class="bookingTextInput" type="text">
+                    </p>
+                    <p class="sameSty">
+                        手機號碼： <input class="bookingTextInput" type="text">
+                    </p>
+                    <p class="reminder">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
+                    <div class="bookingSeparateLine"></div>
+                </div>
+    
+                
+                <div id="creditCardInfo" style="display: block;">
+                    <p class="bookingPageNameDisplay">信用卡付款資訊</p>
+                    <p class="sameSty">
+                        卡片號碼： <input class="bookingTextInput" type="text" placeholder="**** **** **** ****">
+                    </p>
+                    <p class="sameSty">
+                        過期時間： <input class="bookingTextInput"  type="text" placeholder="MM / YY">
+                    </p>
+                    <p class="sameSty">
+                        驗證密碼： <input class="bookingTextInput" type="text" placeholder="CVV">
+                    </p>
+                    <div class="bookingSeparateLine"></div>
+                </div>
+                <div style="text-align: end;">
+                    <div class="totalPrice">總價：新台幣 <span id="totalPrice"></span> 元</div>
+                    <div><button class="confirmBooking">確認訂購並付款</button></div>
+                </div>
+            </div>
+        </div>        
+   </div><br><br>
+    <script src="{{ url_for('static', filename='./js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/booking.js') }}"></script>
+    <footer class="footer">COPYRIGHT © 2022 台北一日遊</footer>
+</body>
+</html>

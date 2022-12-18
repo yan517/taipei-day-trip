@@ -12,7 +12,7 @@
     <div class="clearfix attractionTitleBar container">
         <div onclick="backTohomePage()" class="webtitle" style="float:left;">台北一日遊</div>
         <ul class="navRightCorner">
-            <li id="item1"><a href="#">預定行程</a></li>
+            <li id="appointment"><a href="#">預定行程</a></li>
             <li id="loginSignup"><a href="#">登入/註冊</a></li>
             <li id="logout"><a href="#">登出</a></li>
         </ul>
@@ -22,11 +22,11 @@
             <div class="littleBar"></div>
             <div class="loginText"><span id="titleOfDialog">登入會員帳號</span><span id="dialogClose"><img src="{{ url_for('static', filename='./image/icon_close.svg') }}"></span></div>
             <div style="text-align: center;">
-                <p id="signUpName" style="display: none;"><input class="loginInput" type="text" placeholder="輸入姓名"/></p>
-                <p><input class="loginInput" type="text" placeholder="輸入電子信箱"/></p>
-                <p><input class="loginInput" type="password" placeholder="輸入密碼"/></p>
+                <p id="signUpName" style="display: none;"><input id="username" class="loginInput" type="text" placeholder="輸入姓名"/></p>
+                <p><input id="email" class="loginInput" type="text" placeholder="輸入電子信箱"/></p>
+                <p><input id="password" class="loginInput" type="password" placeholder="輸入密碼"/></p>
                 <p><button id="loginBtn">登入帳戶</button></p>
-                <p id="loginMessage" style="margin-bottom: 10px; display: none;">hihi</p>
+                <p id="loginMessage" style="margin-bottom: 15px; display: none; font-size: 16px;"></p>
                 <p class="changeToSignUp"><span id="haveAcOrNot">還沒有帳戶？</span><a id="signUp" href="#">點此註冊</a></p>
             </div>
         </div>
@@ -56,7 +56,7 @@
                         <input class="radioBtn" type="radio" id="afternoon" name="radioGp" value="下半天"> <span>下半天</span>
                     </div>
                     <div class="bookingPlan-2"><span style="font-weight: 700;">導覽費用：</span> 新台幣 <span id="price">2000</span> 元</div>
-                    <button class="startToBooking">開始預約行程</button>
+                    <button id="startToBook" class="startToBooking">開始預約行程</button>
                 </div>
             </div>
         </div><br>

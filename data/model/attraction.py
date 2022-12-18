@@ -11,6 +11,7 @@ class Attraction(db.Model):
     category = db.Column(db.String(100))
     transport = db.Column(db.String(1000))
     images = db.relationship('Image', backref='attraction')
+    booking = db.relationship('Booking', backref='attraction')
     
 class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

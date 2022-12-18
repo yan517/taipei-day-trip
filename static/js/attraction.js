@@ -1,7 +1,7 @@
 let id;
 let slideIndex = 0;
 let imageArr = [];
-
+let AttractionInfo;
 
 function setId(value) {
     id = value;
@@ -9,6 +9,14 @@ function setId(value) {
 
 function getId() {
     return id;
+}
+
+function setAttractionInfo(value) {
+    AttractionInfo = value;
+}
+
+function getAttractionInfo() {
+    return AttractionInfo;
 }
 
 const attractionData = (id) => fetch(`http://18.181.123.151:3000/api/attraction/${id}`)
@@ -21,8 +29,7 @@ async function getArractionsData(id) {
         imageArr = result.data.images;
         console.log(imageArr);
         createPicSection(result.data);
-        
-        console.log(result);
+        setAttractionInfo(result);
     }catch(err){
         console.log(err);
     }
@@ -93,6 +100,54 @@ for (let i = 0; i < radiobtn.length; i++) {
     });
 }
 
-function backTohomePage(){
-    window.location.href = `http://18.181.123.151:3000/`;
+const startToBook = document.getElementById('startToBook');
+startToBook.addEventListener('click', (event) =>{
+    
+    const status = () => fetch('http://18.181.123.151:3000/api/user/auth')
+	.then((response)=>response.json())
+	.then((data =>{
+		if(data["error"] || data["data"] == null){
+            const loginSignUp = document.getElementById('loginSignup');
+            loginSignUp.click();
+		}
+		else{
+            let bookingTime = "";
+            let price;
+            if (document.querySelectorAll(".radioBtn")[0].checked){
+                price = "2000";
+                bookingTime = document.querySelectorAll(".radioBtn")[0].value;
+            }
+            else {
+                bookingTime = document.querySelectorAll(".radioBtn")[1].value;
+                price = "2500";
+            }
+            let date = document.querySelector('input#planDate.datepicker').value;
+            if (new Date(date) < Date.now()){
+                alert("預約日期不能是過去");
+            }else{
+                let attractionInfo = getAttractionInfo();
+                createBooking(attractionInfo["data"].id,date,bookingTime,price,data["data"].id,data["data"].email);
+            }
+
+		}
+	}));
+	status();
+})
+
+function createBooking(attractionId,date,bookingTime,price,userId,email){
+    const create = async () => await fetch('http://18.181.123.151:3000/api/booking',{
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"attractionId":attractionId,"date":date, "bookingTime":bookingTime,"price":price,"userId":userId,"email":email})        
+    }).then((response) => response.json())
+    .then(data=>{
+        if(data["ok"]){
+            window.location.href = "http://18.181.123.151:3000/booking";
+        }else{
+            alert(data["message"]);
+        }
+    })
+    create();
 }
