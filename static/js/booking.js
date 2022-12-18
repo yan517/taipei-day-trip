@@ -1,30 +1,35 @@
 setTimeout(function () {
     const getBookingAttractions = async ()=> {
         value = getUserInfo();
-        let userEmail = value["data"].email;
-        let userid = value["data"].id;
-        let userName = value["data"].name;
-        fetch(`http://18.181.123.151:3000/api/booking?userId=${userid}`)
-        .then((response)=>response.json())
-        .then((data)=> {
-            console.log(data);
-            let userNameDiv = document.getElementById("userName");
-            let allBookingInfo = document.querySelector("#allBookingInfo");
-            let footer = document.querySelector(".footer");
-            if('error' in data){
-                userNameDiv.textContent = userName;
-                allBookingInfo.style.display = 'none';
-                noRecord.style.display = 'block';
-                footer.style.height = "100%";
-            }
-            else{
-                allBookingInfo.style.display = 'block';
-                noRecord.style.display = 'none';
-                footer.style.height = "104px";
-                createBookingSection(data,userEmail,userid,userName);
-            }
-                
-        });
+        console.log(value);
+        if(value){
+            let userEmail = value["data"].email;
+            let userid = value["data"].id;
+            let userName = value["data"].name;
+            fetch(`http://18.181.123.151:3000/api/booking?userId=${userid}`)
+            .then((response)=>response.json())
+            .then((data)=> {
+                console.log(data);
+                let userNameDiv = document.getElementById("userName");
+                let allBookingInfo = document.querySelector("#allBookingInfo");
+                let footer = document.querySelector(".footer");
+                if('error' in data){
+                    userNameDiv.textContent = userName;
+                    allBookingInfo.style.display = 'none';
+                    noRecord.style.display = 'block';
+                    footer.style.height = "100%";
+                }
+                else{
+                    allBookingInfo.style.display = 'block';
+                    noRecord.style.display = 'none';
+                    footer.style.height = "104px";
+                    createBookingSection(data,userEmail,userid,userName);
+                }
+                    
+            });
+        }else{
+            window.location.href = "http://18.181.123.151:3000";
+        }
     }
     getBookingAttractions();
     
