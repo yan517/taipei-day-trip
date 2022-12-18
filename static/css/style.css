@@ -36,6 +36,12 @@ html,body{
 	margin-bottom: 30px;
 }
 
+.bookingSeparateLine{
+	border-bottom: solid 1px #E8E8E8;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
 .attractionTitleBar{
 	height: 35px;
     position: relative;
@@ -317,6 +323,94 @@ input.loginInput{
 	margin-bottom: 15px;
 }
 
+.bookingPageNameDisplay{
+	color: #666666;
+	font-weight: 700;
+	font-size: 19px;
+	line-height: 16px;
+	margin-bottom: 35px;
+}
+
+.paraName{
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 13px;
+	color: #448899;
+	margin-bottom: 10px;
+}
+
+.sameSty{
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 13px;
+	color: #666666;
+}
+
+.paraMargin{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	line-height: 20px;
+}
+
+#noRecord{
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 13px;
+	color: #666666;
+}
+
+.bookingTextInput{
+	width: 200px;
+	height: 38px;
+	background: #FFFFFF;
+	border: 1px solid #E8E8E8;
+	border-radius: 5px;
+	margin-bottom: 25px;
+	text-indent: 15px;
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 13px;
+}
+
+.reminder{
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 18px;
+	color: #666666;
+}
+
+.confirmBooking{
+	width: 173px;
+	height: 36px;
+	background: #448899;
+	border-radius: 5px;
+	color: #FFFFFF;
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 19px;
+	line-height: 16px;	
+	border: none;
+}
+
+.totalPrice{
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 13px;
+	color: #666666;
+	margin-bottom: 30px;
+}
+
 @media (min-width: 1202px) and (max-width: 1920px) { 
 	.grid-item-4 img{
 		max-width: 270px;
@@ -580,6 +674,32 @@ input.loginInput{
 	input[name="radioGp"]{
 		accent-color: #448899;
 	}
+
+	.bookingAttrSection{
+		display: grid;
+		grid-template-columns: 40% 55% 5%;
+	}
+
+	.bookingAttrImg{
+		max-width: 266px;
+		max-height: 200px;
+		min-height: 200px;
+		object-fit: cover;
+		width: 100%;
+	}
+
+	.bookingDeleteBtn{
+		width: 30px;
+		height: 30px;
+		background-color: white;
+		background-image: url("../image/icon_delete.svg");
+		border: none;
+	}
+
+	.sectionContainer{
+		margin-left: 8%; 
+		margin-right: 4%;
+	}	
 }
 
 .observer {
@@ -874,7 +994,33 @@ input.loginInput{
 
 	input[name="radioGp"]{
 		accent-color: #448899;
-	}	
+	}
+	
+	.bookingAttrSection{
+		display: grid;
+		grid-template-columns: 40% 55% 5%;
+	}
+
+	.bookingAttrImg{
+		max-width: 266px;
+		max-height: 200px;
+		min-height: 200px;
+		object-fit: cover;
+		width: 100%;
+	}
+
+	.bookingDeleteBtn{
+		width: 30px;
+		height: 30px;
+		background-color: white;
+		background-image: url("../image/icon_delete.svg");
+		border: none;
+	}
+
+	.sectionContainer{
+		margin-left: 8%; 
+		margin-right: 4%;
+	}		
 }
 
  @media (min-width: 360px) and (max-width: 600px) {
@@ -1143,6 +1289,32 @@ input.loginInput{
 
 	input[name="radioGp"]{
 		accent-color: #448899;
-	}	
+	}
+	
+	.bookingAttrSection{
+		display: grid;
+		grid-template-columns: 100%;
+	}
+
+	.bookingAttrImg{
+		max-width: 266px;
+		max-height: 200px;
+		min-height: 200px;
+		object-fit: cover;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.bookingDeleteBtn{
+		width: 30px;
+		height: 30px;
+		background-color: white;
+		background-image: url("../image/icon_delete.svg");
+		border: none;
+	}
+
+	.alignBookingItem{
+		text-align: end;
+	}
 }
 

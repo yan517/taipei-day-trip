@@ -1,6 +1,7 @@
 from flask import *
 from data.api.attraction import attractionApp
 from data.api.user import userApp
+from data.api.booking import bookingApp
 from extensions import db,bcrypt
 from dotenv import load_dotenv
 import os
@@ -32,6 +33,7 @@ def thankyou():
 
 app.register_blueprint(attractionApp, url_prefix='')
 app.register_blueprint(userApp, url_prefix='')
+app.register_blueprint(bookingApp, url_prefix='')
 
 #app.run(port=3000)		
 app.run(host='0.0.0.0',port=3000)		

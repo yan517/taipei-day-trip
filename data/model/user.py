@@ -5,3 +5,4 @@ class User(db.Model):
     name = db.Column(db.String(255),nullable=False)
     password = db.Column(db.String(255),nullable=False)
     email = db.Column(db.String(255), unique=True ,nullable=False)
+    booking = db.relationship('Booking', backref='user')

@@ -1,3 +1,32 @@
+let userInfo;
+
+function setUserInfo(value) {
+    userInfo = value;
+}
+
+function getUserInfo() {
+    return userInfo;
+}
+
+ function getUserStatus(){
+	const status = async () => await fetch('http://18.181.123.151:3000/api/user/auth')
+	.then((response)=>response.json())
+	.then(((data) => {
+        console.log(data);
+		if(data["error"] || data["data"] == null){
+			document.querySelector('#logout').style.display = 'none';
+			document.querySelector('#loginSignup').style.display = 'block';			
+		}
+		else{
+			document.querySelector('#logout').style.display = 'block';
+			document.querySelector('#loginSignup').style.display = 'none';
+            setUserInfo(data);
+		}
+	}));
+	status();
+}
+getUserStatus();
+
 const loginSignUp = document.getElementById('loginSignup');
 loginSignUp.addEventListener('click', (event) =>{
 	let x = document.querySelector('#signInFrame');
@@ -102,24 +131,6 @@ loginBtn.addEventListener('click',(event) => {
         login(); 
 })
 
-function getUserStatus(){
-	const status = () => fetch('http://18.181.123.151:3000/api/user/auth')
-	.then((response)=>response.json())
-	.then((data =>{
-        console.log(data);
-		if(data["error"] || data["data"] == null){
-			document.querySelector('#logout').style.display = 'none';
-			document.querySelector('#loginSignup').style.display = 'block';			
-		}
-		else{
-			document.querySelector('#logout').style.display = 'block';
-			document.querySelector('#loginSignup').style.display = 'none';
-		}
-	}));
-	status();
-}
-getUserStatus();
-
 const logout = document.getElementById('logout');
 logout.addEventListener('click', (event) =>{
     const logO = async () => await fetch('http://18.181.123.151:3000/api/user/auth',{
@@ -132,3 +143,23 @@ logout.addEventListener('click', (event) =>{
     })
 	logO();
 })
+
+const appointment = document.getElementById('appointment');
+appointment.addEventListener('click', (event) =>{
+    const status = () => fetch('http://18.181.123.151:3000/api/user/auth')
+	.then((response)=>response.json())
+	.then((data =>{
+		if(data["error"] || data["data"] == null){
+            const loginSignUp = document.getElementById('loginSignup');
+            loginSignUp.click();
+		}
+		else{
+			window.location.href = "http://18.181.123.151:3000/booking";
+		}
+	}));
+	status();
+})
+
+function backTohomePage(){
+    window.location.href = `http://18.181.123.151:3000/`;
+}
