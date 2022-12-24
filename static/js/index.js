@@ -4,6 +4,7 @@ let page = 0
 let keyword;
 let loading = true;
 
+getUserStatus(null,null);
 //--------------------------------- Load More ----------------------------------
 const callback = async ([entry]) => {
 	console.log("footer");

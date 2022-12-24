@@ -41,13 +41,13 @@
                 <div id="contactInfo" style="display: block;">
                     <p class="bookingPageNameDisplay">您的聯絡資訊</p>
                     <p class="sameSty">
-                        聯絡姓名： <input class="bookingTextInput" type="text">
+                        聯絡姓名： <input id="contactName" class="bookingTextInput" type="text">
                     </p>
                     <p class="sameSty">
-                        連絡信箱： <input class="bookingTextInput" type="text">
+                        連絡信箱： <input id="contactEmail" class="bookingTextInput" type="text">
                     </p>
                     <p class="sameSty">
-                        手機號碼： <input class="bookingTextInput" type="text">
+                        手機號碼： <input id="phone" class="bookingTextInput" type="text">
                     </p>
                     <p class="reminder">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
                     <div class="bookingSeparateLine"></div>
@@ -56,24 +56,28 @@
                 
                 <div id="creditCardInfo" style="display: block;">
                     <p class="bookingPageNameDisplay">信用卡付款資訊</p>
-                    <p class="sameSty">
-                        卡片號碼： <input class="bookingTextInput" type="text" placeholder="**** **** **** ****">
-                    </p>
-                    <p class="sameSty">
-                        過期時間： <input class="bookingTextInput"  type="text" placeholder="MM / YY">
-                    </p>
-                    <p class="sameSty">
-                        驗證密碼： <input class="bookingTextInput" type="text" placeholder="CVV">
-                    </p>
+                    <div class="sameSty" style="display: flex;">
+                        <div style="padding-top: 11px;">卡片號碼： </div><div class="bookingTextInput tpfield" id="card-number"></div>
+                    </div>
+                    <div class="sameSty" style="display: flex;">
+                        <div style="padding-top: 11px;">過期時間： </div> <div class="bookingTextInput tpfield" id="card-expiration-date"></div>
+                    </div>
+                    <div class="sameSty" style="display: flex;">
+                        <div style="padding-top: 11px;">驗證密碼： </div><div class="bookingTextInput tpfield" id="card-ccv"></div>
+                    </div>
                     <div class="bookingSeparateLine"></div>
                 </div>
                 <div style="text-align: end;">
                     <div class="totalPrice">總價：新台幣 <span id="totalPrice"></span> 元</div>
-                    <div><button class="confirmBooking">確認訂購並付款</button></div>
+                    <div><button id="confrimBtn" class="confirmBooking" type="submit">確認訂購並付款</button></div>
                 </div>
             </div>
         </div>        
    </div><br><br>
+   <script src="https://js.tappaysdk.com/sdk/tpdirect/v5.14.0"></script>
+   <script>
+       TPDirect.setupSDK(126967, '{{ key }}', 'sandbox')
+   </script>
     <script src="{{ url_for('static', filename='./js/common.js') }}"></script>
     <script src="{{ url_for('static', filename='./js/booking.js') }}"></script>
     <footer class="footer">COPYRIGHT © 2022 台北一日遊</footer>

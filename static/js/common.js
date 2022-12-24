@@ -1,31 +1,24 @@
-let userInfo;
-
-function setUserInfo(value) {
-    userInfo = value;
-}
-
-function getUserInfo() {
-    return userInfo;
-}
-
- function getUserStatus(){
+function getUserStatus(cb,value){
 	const status = async () => await fetch('http://18.181.123.151:3000/api/user/auth')
 	.then((response)=>response.json())
 	.then(((data) => {
         console.log(data);
 		if(data["error"] || data["data"] == null){
 			document.querySelector('#logout').style.display = 'none';
-			document.querySelector('#loginSignup').style.display = 'block';			
+			document.querySelector('#loginSignup').style.display = 'block';	
+            if(cb) window.location.href = "http://18.181.123.151:3000";	
 		}
 		else{
 			document.querySelector('#logout').style.display = 'block';
 			document.querySelector('#loginSignup').style.display = 'none';
-            setUserInfo(data);
+            if(cb && value) 
+                cb(value);
+            else
+                cb(data);
 		}
 	}));
 	status();
 }
-getUserStatus();
 
 const loginSignUp = document.getElementById('loginSignup');
 loginSignUp.addEventListener('click', (event) =>{

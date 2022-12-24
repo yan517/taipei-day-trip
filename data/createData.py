@@ -16,8 +16,9 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     """name = db.Column(db.String(255),nullable=False)
     password = db.Column(db.String(255),nullable=False)
-    email = db.Column(db.String(255), unique=True ,nullable=False)"""
-    booking = db.relationship('Booking', backref='user')
+    email = db.Column(db.String(255), unique=True ,nullable=False)
+    booking = db.relationship('Booking', backref='user')"""
+    order = db.relationship('Order', backref='user')
 
 class Attraction(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -29,8 +30,9 @@ class Attraction(db.Model):
     mrt =  db.Column(db.String(100))
     category = db.Column(db.String(100))
     transport = db.Column(db.String(1000))
-    images = db.relationship('Image', backref='attraction') """
-    booking = db.relationship('Booking', backref='attraction')
+    images = db.relationship('Image', backref='attraction') 
+    booking = db.relationship('Booking', backref='attraction')"""
+    order = db.relationship('Order', backref='attraction')
     
 """class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -39,9 +41,21 @@ class Attraction(db.Model):
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    date = db.Column(db.DateTime(50),nullable=False)
+    """ date = db.Column(db.DateTime(50),nullable=False)
     time = db.Column(db.String(50),nullable=False)
     price = db.Column(db.String(50),nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    attraction_id = db.Column(db.Integer, db.ForeignKey('attraction.id'), nullable=False) """
+    order = db.relationship('Order', backref='booking')
+
+class Order(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    number = db.Column(db.String(255),nullable=False)
+    name = db.Column(db.String(255),nullable=False)
+    email = db.Column(db.String(255),nullable=False)
+    phone = db.Column(db.String(255), nullable=False)
+    status = db.Column(db.Integer, nullable=False)
+    booking_id = db.Column(db.Integer, db.ForeignKey('booking.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     attraction_id = db.Column(db.Integer, db.ForeignKey('attraction.id'), nullable=False)
 

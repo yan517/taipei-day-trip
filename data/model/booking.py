@@ -7,3 +7,4 @@ class Booking(db.Model):
     price = db.Column(db.String(50),nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     attraction_id = db.Column(db.Integer, db.ForeignKey('attraction.id'), nullable=False)
+    order = db.relationship('Order', backref='booking')
