@@ -16,9 +16,17 @@ async function getOrderData(number) {
     let result = null;
     try{
         result = await orderData(number);
-        let status = result.data.status;
-        if (status == 0) document.querySelector('#successOrNot').textContent = "行程預定成功"
-        else document.querySelector('#successOrNot').textContent = "行程預定失敗" 
+        if (result["data"] == null){
+            document.querySelector("#display").style.display = 'none';
+            document.querySelector("#noThisOrder").style.display = 'block';
+        }
+        else{
+            document.querySelector("#display").style.display = 'block';
+            document.querySelector("#noThisOrder").style.display = 'none';
+            let status = result.data.status;
+            if (status == 0) document.querySelector('#successOrNot').textContent = "行程預定成功"
+            else document.querySelector('#successOrNot').textContent = "行程預定失敗" 
+        }
     }catch(err){
         console.log(err);
     }

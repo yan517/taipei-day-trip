@@ -31,10 +31,13 @@
                 </div>
             </div>
             <div class="container" style="text-align: center;">
-                <div id="successOrNot" class="orderDiv"></div>
-                <div class="orderDiv">您的訂單編號如下</div>
-                <div class="orderDiv">{{ num }}</div>
-                <div class="orderDiv">請記住此編號，或到會員中心查詢歷史訂單</div>
+                <div id="display">
+                    <div id="successOrNot" class="orderDiv"></div>
+                    <div class="orderDiv">您的訂單編號如下</div>
+                    <div class="orderDiv">{{ num }}</div>
+                    <div class="orderDiv">請記住此編號，或到會員中心查詢歷史訂單</div>
+                </div>
+                <div id="noThisOrder" style="display: none; margin: 20px 0px;">沒有此訂單編號</div>
             </div>
             <footer class="footer" style="height: 100%;">COPYRIGHT © 2022 台北一日遊</footer>
     <script src="{{ url_for('static', filename='./js/common.js') }}"></script>    
