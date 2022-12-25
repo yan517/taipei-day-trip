@@ -3,6 +3,8 @@ let slideIndex = 0;
 let imageArr = [];
 let AttractionInfo;
 
+getUserStatus(null,null);
+
 function setId(value) {
     id = value;
 }

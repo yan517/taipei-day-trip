@@ -3,7 +3,8 @@ from extensions import db,bcrypt
 from data.model.booking import Booking
 from data.model.user import User
 from data.model.attraction import Attraction, Image
-from sqlalchemy import and_
+from data.model.order import Order
+from sqlalchemy import and_, or_
 import datetime, jwt, os
 from dotenv import load_dotenv
 load_dotenv()
@@ -15,7 +16,7 @@ def getBooking():
     userId = request.args.get("userId")
     if (userId):
             try:
-                get_attractions_booking = Booking.query.filter_by(user_id=userId).join(User, Booking.user_id==User.id).join(Attraction, Booking.attraction_id==Attraction.id).join(Image, Image.attraction_id==Attraction.id).all()
+                get_attractions_booking = Booking.query.filter(or_(and_(Booking.user_id==userId,Order.status==None),and_(Booking.user_id==1,Order.status!=0))).join(User, Booking.user_id==User.id).join(Attraction, Booking.attraction_id==Attraction.id).join(Image, Image.attraction_id==Attraction.id).outerjoin(Order, Order.booking_id==Booking.id).all()
                 if get_attractions_booking:
                     data = []
                     for item in get_attractions_booking:
