@@ -56,6 +56,7 @@ html,body{
 	font-size: 30px;
 	line-height: 34px;
 	color: #448899;
+	cursor: pointer;
 }
 
 .navRightCorner{
@@ -283,6 +284,7 @@ input:focus{
 	position: relative;
     left: 60px;
     bottom: 5px;
+	cursor: pointer;
 }
 
 .loginInput{
@@ -313,6 +315,7 @@ input.loginInput{
     line-height: 16px;
     color: #FFFFFF;
 	margin-bottom: 15px;
+	cursor: pointer;
 }
 
 .changeToSignUp{
@@ -440,6 +443,7 @@ input.loginInput{
 	  height: auto;
 	  width: 270px;
 	  position: relative;
+	  cursor: pointer;
 	}
 
 	.spanblk{
@@ -651,6 +655,7 @@ input.loginInput{
 		font-size: 19px;
 		line-height: 16px;
 		border: none;
+		cursor: pointer;
 	}
 
 	#description, #address, #transport{
@@ -699,6 +704,7 @@ input.loginInput{
 		background-color: white;
 		background-image: url("../image/icon_delete.svg");
 		border: none;
+		cursor: pointer;
 	}
 
 	.sectionContainer{
@@ -760,6 +766,7 @@ input.loginInput{
 	  margin: 10px 52px 10px 0px;
 	  text-align: center;
 	  position: relative;
+	  cursor: pointer;
 	}
 
 	.container{
@@ -972,6 +979,7 @@ input.loginInput{
 		font-size: 19px;
 		line-height: 16px;
 		border: none;
+		cursor: pointer;
 	}
 
 	#description, #address, #transport{
@@ -1020,6 +1028,7 @@ input.loginInput{
 		background-color: white;
 		background-image: url("../image/icon_delete.svg");
 		border: none;
+		cursor: pointer;
 	}
 
 	.sectionContainer{
@@ -1049,6 +1058,7 @@ input.loginInput{
 	  margin: 10px 0px 10px 0px;
 	  text-align: center;
 	  position: relative;
+	  cursor: pointer;
 	}
 
 	.container{
@@ -1165,7 +1175,7 @@ input.loginInput{
 
 	#slideImg{
 		width: 100%;
-		max-height: 350px;
+		height: 350px;
 		border-radius: 5px;
 		object-fit: cover;
 		vertical-align: middle;
@@ -1267,6 +1277,7 @@ input.loginInput{
 		font-size: 19px;
 		line-height: 16px;
 		border: none;
+		cursor: pointer;
 	}
 
 	#description, #address, #transport{
@@ -1316,6 +1327,7 @@ input.loginInput{
 		background-color: white;
 		background-image: url("../image/icon_delete.svg");
 		border: none;
+		cursor: pointer;
 	}
 
 	.alignBookingItem{
