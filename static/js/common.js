@@ -4,16 +4,16 @@ function getUserStatus(cb,value){
 	.then(((data) => {
         console.log(data);
 		if(data["error"] || data["data"] == null){
-			document.querySelector('#logout').style.display = 'none';
+			document.querySelector('#memberPage').style.display = 'none';
 			document.querySelector('#loginSignup').style.display = 'block';	
             if(cb) window.location.href = "http://18.181.123.151:3000";	
 		}
 		else{
-			document.querySelector('#logout').style.display = 'block';
+			document.querySelector('#memberPage').style.display = 'block';
 			document.querySelector('#loginSignup').style.display = 'none';
             if(cb && value) 
                 cb(value);
-            else
+            else if(cb)
                 cb(data);
 		}
 	}));
@@ -123,20 +123,6 @@ loginBtn.addEventListener('click',(event) => {
         createAc();
     else 
         login(); 
-})
-
-const logout = document.getElementById('logout');
-logout.addEventListener('click', (event) =>{
-    const logO = async () => await fetch('http://18.181.123.151:3000/api/user/auth',{
-        method:'DELETE' 
-    }).then((response) => response.json())
-    .then(data=>{
-        if(data["ok"]){
-            location.reload();
-            return false;
-        }
-    })
-	logO();
 })
 
 const appointment = document.getElementById('appointment');

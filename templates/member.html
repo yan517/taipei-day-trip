@@ -32,43 +32,29 @@
                     </div>
                 </div>
             </div>
+            <div id="preloader"></div>
+            <div class="separateLine"></div>
             <div class="container" style="text-align: center;">
-                <div id="display">
-                    <div class="orderDiv">多謝訂購</div>
-                    <div id="successOrNot" class="orderDiv"></div>
-                    <div class="separateLine"></div>
-                    <div class="orderDiv orderTitle">訂單資料</div>
-                    <div id="order-details">
-                        <div id="contact">
-                            <div class="order-details-container">
-                                <p class="contactN">訂購人</p> 
-                                <p class="contactName" id="contact-name"></p>
-                                <p class="contactP">聯絡電話</p> 
-                                <p class="contactPhone" id="contact-phone"></p>
-                                <p class="emailN">電子郵箱</p>
-                                <p class="email" id="contact-email"></p>
-                                <p class="number">訂單編號</p>
-                                <p class="num">{{ num }}</p>
-                            </div>
-                            <div id="details" class="item-details-container">
-                                <div class="formTitle">訂購項目</div>
-                                <div class="formTitle">訂購日期</div>
-                                <div class="formTitle">訂購時間</div>
-                                <div class="formTitle">訂購金額</div>
-                            </div>
-                        </div><br>
-                        <div class="orderDiv">歷史訂單可以到會員中心查詢</div>
-                    </div>
+                <div>
+                    <h3>會員資料</h3>
+                    <div>用戶名: <span id="display_name"></span></div>
+                    <div>用戶郵箱: <span id="display_email"></span></div>
+                </div><br>
+                <div class="separateLine"></div>
+                <h3>歷史訂單</h3><br>
+                <h5>只顯示最近十單(由新至舊)</h5>
+                <div class="order-container">
+                    <div class="order-title">訂單編號</div>
+                    <div class="order-title">訂購人</div>
+                    <div class="order-title">聯絡電話</div>
+                    <div class="order-title">付款狀態</div>
                 </div>
-                <div id="noThisOrder" style="display: none; margin: 20px 0px;">沒有此訂單編號</div>
-            </div>
-            <br><br>
+                <div id="noOrders">沒有歷史訂單</div><br>
+                <button id="logout" class="confirmBooking">登出</button>
+            </div><br><br>
+            
             <footer class="footer" style="height: 100%;">COPYRIGHT © 2023 台北一日遊</footer>
     <script src="{{ url_for('static', filename='./js/common.js') }}"></script>    
-    <script src="{{ url_for('static', filename='./js/order.js') }}"></script>
-    <script type="text/javascript">
-        setNumber('{{ num }}');
-        getUserStatus(getOrderData,'{{ num }}');
-    </script>
+    <script src="{{ url_for('static', filename='./js/member.js') }}"></script>
     </body>
 </html>

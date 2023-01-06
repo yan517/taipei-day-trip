@@ -217,6 +217,10 @@ input:focus{
     outline: none;
 }
 
+button:hover{
+	cursor: pointer;
+}
+
 .fade {
 	animation-name: fade;
 	animation-duration: 1.5s;
@@ -227,10 +231,6 @@ input:focus{
 @keyframes fade {
 	from {opacity: .4} 
 	to {opacity: 1}
-}
-
-#logout{
-	display: none;
 }
 
 #signInFrame{
@@ -512,7 +512,8 @@ input.loginInput{
 		background: #E8E8E8;
 		border-radius: 5px;
 		width: 96px;
-		height: 40px;	
+		height: 40px;
+		cursor: pointer;	
 	}
 	
 	.catbtnDiv{
@@ -835,7 +836,8 @@ input.loginInput{
 		background: #E8E8E8;
 		border-radius: 5px;
 		width: 96px;
-		height: 40px;	
+		height: 40px;
+		cursor: pointer;	
 	}
 	
 	.catbtnDiv{
@@ -1133,7 +1135,8 @@ input.loginInput{
 		background: #E8E8E8;
 		border-radius: 5px;
 		width: 66px;
-		height: 22px;	
+		height: 22px;
+		cursor: pointer;	
 	}
 	
 	.catbtnDiv{
@@ -1335,6 +1338,15 @@ input.loginInput{
 	}
 }
 
+#preloader{
+	background: rgb(255, 255, 255) url("../image/loader2.gif") no-repeat center center;
+	background-size: 35%;
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	z-index: 100;
+}
+
 /* .tpfield {
 	height: 40px;
 	width: 300px;
@@ -1349,3 +1361,89 @@ input.loginInput{
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
 } */
+
+.order-container {
+	display: grid;
+	grid-template-columns: auto auto auto auto;	
+}
+
+.order-title {
+background-color: #9e9e9e;
+padding: 10px;
+font-size: 18px;
+text-align: center;
+border-top: solid 1px #000000;
+border-bottom: solid 1px #000000;
+color: white;
+}
+
+.order-item {
+background-color: rgba(255, 255, 255, 0.8);
+padding: 10px;
+font-size: 18px;
+text-align: center;
+border-bottom: solid 1px #9e9e9e;
+}
+
+.order-details-container{
+	display: grid;
+	grid-template-areas: 'contactN contactName contactP contactPhone'
+						 'emailN email  number num'; 
+	margin-left: 20%;
+	margin-right: 20%;
+	text-align: center;
+	border-top: #9e9e9e 2px solid;
+	border-right: #9e9e9e 2px solid;
+	border-left: #9e9e9e 2px solid;
+}
+.number { grid-area: number;    top: 0%;}
+
+.num{ grid-area: num;    top: 0%;}
+
+.email { grid-area: email;    top: 0%;}
+
+.emailN{ grid-area: emailN;    top: 0%;}
+
+.contactP{ grid-area: contactP;    top: 0%;}
+
+.contactPhone{ grid-area: contactPhone;top: 0%;}
+
+.contactN{ grid-area: contactN; top: 0%;}
+
+.contactName{ grid-area: contactName; top: 0%;}
+
+.order-details-container> p {
+	background-color: #9e9e9e;
+	text-align: center;
+	padding: 20px 0;
+	font-size: 15px;
+	border-bottom: white 2px solid;
+	color: snow;
+  }
+
+.item-details-container{
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%; 
+	margin-left: 20%;
+	margin-right: 20%;
+	font-size: 15px;
+	border-left: #9e9e9e 2px solid;
+    border-right: #9e9e9e 2px solid;
+	border-bottom: #9e9e9e 2px solid;
+}
+
+.formTitle{
+	border-bottom: #9e9e9e 1px solid;
+	font-size: 15px;
+    font-weight: bold;
+}
+
+.thankyouPage-totalPrice{
+	background: #9e9e9e;
+    color: white;
+}
+
+.orderTitle{
+	font-size: 25px;
+    font-weight: bold;
+}

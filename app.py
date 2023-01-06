@@ -33,6 +33,9 @@ def thankyou():
 	if 'number' in request.args:
 		number = request.args['number']
 	return render_template("thankyou.html", num = number)
+@app.route("/member")
+def member():
+	return render_template("member.html")
 
 app.register_blueprint(attractionApp, url_prefix='')
 app.register_blueprint(userApp, url_prefix='')

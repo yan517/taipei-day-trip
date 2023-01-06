@@ -119,3 +119,29 @@ def getOrderNumber(orderNumber):
     else:
         return make_response(jsonify({"error": True, "message": "未登入系統，拒絕存取"}),403)            
 
+@orderApp.route("/api/ordered", methods=["GET"])
+def getOrders():
+    if session.get('Token'):
+        if session['Token']: 
+            try:
+                id = request.args.get("id")
+                result = []
+                orders = Order.query.filter_by(user_id=id).group_by(Order.number).order_by(Order.id.desc()).limit(10).all()
+                if (orders):
+                    for i in orders:
+                        result.append({
+                            "order_number":  i.number,
+                            "status":  i.status,
+                            "email":  i.email,
+                            "phone":  i.phone,
+                            "name" : i.name
+                        })
+                    return make_response(jsonify({"data": result}),200)
+                else:
+                    return make_response(jsonify({"data": None}),200)
+            except:
+                return make_response(jsonify({"error": True, "message": "伺服器內部錯誤"}),500)
+        else:
+            return make_response(jsonify({"error": True, "message": "未登入系統，拒絕存取"}),403)
+    else:
+        return make_response(jsonify({"error": True, "message": "未登入系統，拒絕存取"}),403)    
