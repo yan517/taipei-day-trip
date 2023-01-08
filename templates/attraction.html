@@ -14,7 +14,7 @@
         <ul class="navRightCorner">
             <li id="appointment"><a href="#">預定行程</a></li>
             <li id="loginSignup"><a href="#">登入/註冊</a></li>
-            <li id="logout"><a href="#">登出</a></li>
+            <li id="memberPage"><a href="http://18.181.123.151:3000/member">會員中心</a></li>
         </ul>
     </div>
     <div id="signInUpFrame">
@@ -22,12 +22,14 @@
             <div class="littleBar"></div>
             <div class="loginText"><span id="titleOfDialog">登入會員帳號</span><span id="dialogClose"><img src="{{ url_for('static', filename='./image/icon_close.svg') }}"></span></div>
             <div style="text-align: center;">
-                <p id="signUpName" style="display: none;"><input id="username" class="loginInput" type="text" placeholder="輸入姓名"/></p>
-                <p><input id="email" class="loginInput" type="text" placeholder="輸入電子信箱"/></p>
-                <p><input id="password" class="loginInput" type="password" placeholder="輸入密碼"/></p>
-                <p><button id="loginBtn">登入帳戶</button></p>
-                <p id="loginMessage" style="margin-bottom: 15px; display: none; font-size: 16px;"></p>
-                <p class="changeToSignUp"><span id="haveAcOrNot">還沒有帳戶？</span><a id="signUp" href="#">點此註冊</a></p>
+                <form onsubmit="return false">
+                    <p id="signUpName" style="display: none;"><input id="username" class="loginInput" type="text" placeholder="輸入姓名"/></p>
+                    <p><input id="email" class="loginInput" required="required" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="輸入電子信箱"/></p>
+                    <p><input id="password" class="loginInput" type="password" placeholder="輸入密碼"/></p>
+                    <p><button id="loginBtn">登入帳戶</button></p>
+                    <p id="loginMessage" style="margin-bottom: 15px; display: none; font-size: 16px;"></p>
+                    <p class="changeToSignUp"><span id="haveAcOrNot">還沒有帳戶？</span><a id="signUp" href="#">點此註冊</a></p>
+                </form>
             </div>
         </div>
     </div>
@@ -69,7 +71,7 @@
         <div id="transport"></div>
    </div>
    
-    <footer class="footer">COPYRIGHT © 2022 台北一日遊</footer>
+    <footer class="footer">COPYRIGHT © 2023 台北一日遊</footer>
     <script src="{{ url_for('static', filename='./js/common.js') }}"></script>
     <script src="{{ url_for('static', filename='./js/attraction.js') }}"></script>
     <script type="text/javascript">

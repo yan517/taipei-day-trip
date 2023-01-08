@@ -14,7 +14,7 @@
         <ul class="navRightCorner">
             <li id="appointment"><a href="#">預定行程</a></li>
             <li id="loginSignup"><a href="#">登入/註冊</a></li>
-            <li id="logout"><a href="#">登出</a></li>
+            <li id="memberPage"><a href="http://18.181.123.151:3000/member">會員中心</a></li>
         </ul>
     </div>
     <div id="signInUpFrame">
@@ -22,15 +22,18 @@
             <div class="littleBar"></div>
             <div class="loginText"><span id="titleOfDialog">登入會員帳號</span><span id="dialogClose"><img src="{{ url_for('static', filename='./image/icon_close.svg') }}"></span></div>
             <div style="text-align: center;">
-                <p id="signUpName" style="display: none;"><input class="loginInput" type="text" placeholder="輸入姓名"/></p>
-                <p><input class="loginInput" type="text" placeholder="輸入電子信箱"/></p>
-                <p><input class="loginInput" type="password" placeholder="輸入密碼"/></p>
-                <p><button id="loginBtn">登入帳戶</button></p>
-                <p id="loginMessage" style="margin-bottom: 10px; display: none;">hihi</p>
-                <p class="changeToSignUp"><span id="haveAcOrNot">還沒有帳戶？</span><a id="signUp" href="#">點此註冊</a></p>
+                <form onsubmit="return false">
+                    <p id="signUpName" style="display: none;"><input id="username" class="loginInput" type="text" placeholder="輸入姓名"/></p>
+                    <p><input id="email" class="loginInput" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="輸入電子信箱"/></p>
+                    <p><input id="password" class="loginInput" type="password" placeholder="輸入密碼"/></p>
+                    <p><button id="loginBtn">登入帳戶</button></p>
+                    <p id="loginMessage" style="margin-bottom: 15px; display: none; font-size: 16px;"></p>
+                    <p class="changeToSignUp"><span id="haveAcOrNot">還沒有帳戶？</span><a id="signUp" href="#">點此註冊</a></p>
+                </form>
             </div>
         </div>
     </div>
+    <div id="preloader"></div>
     <div class="separateLine"></div>
     <div class="container">
         <div class="sectionContainer">
@@ -38,39 +41,41 @@
             <div id="noRecord">目前沒有任何待預訂的行程</div>
             <div id="allBookingInfo">
                 <div id="bookingSection"></div>
-                <div id="contactInfo" style="display: block;">
-                    <p class="bookingPageNameDisplay">您的聯絡資訊</p>
-                    <p class="sameSty">
-                        聯絡姓名： <input id="contactName" class="bookingTextInput" type="text">
-                    </p>
-                    <p class="sameSty">
-                        連絡信箱： <input id="contactEmail" class="bookingTextInput" type="text">
-                    </p>
-                    <p class="sameSty">
-                        手機號碼： <input id="phone" class="bookingTextInput" type="text">
-                    </p>
-                    <p class="reminder">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
-                    <div class="bookingSeparateLine"></div>
-                </div>
-    
-                
-                <div id="creditCardInfo" style="display: block;">
-                    <p class="bookingPageNameDisplay">信用卡付款資訊</p>
-                    <div class="sameSty" style="display: flex;">
-                        <div style="padding-top: 11px;">卡片號碼： </div><div class="bookingTextInput tpfield" id="card-number"></div>
+                <form>
+                    <div id="contactInfo" style="display: block;">
+                        <p class="bookingPageNameDisplay">您的聯絡資訊</p>
+                        <p class="sameSty">
+                            聯絡姓名： <input id="contactName" class="bookingTextInput" type="text">
+                        </p>
+                        <p class="sameSty">
+                            連絡信箱： <input id="contactEmail" required="required" class="bookingTextInput" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        </p>
+                        <p class="sameSty">
+                            手機號碼： <input id="phone" class="bookingTextInput" type="text">
+                        </p>
+                        <p class="reminder">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
+                        <div class="bookingSeparateLine"></div>
                     </div>
-                    <div class="sameSty" style="display: flex;">
-                        <div style="padding-top: 11px;">過期時間： </div> <div class="bookingTextInput tpfield" id="card-expiration-date"></div>
+        
+                    
+                    <div id="creditCardInfo" style="display: block;">
+                        <p class="bookingPageNameDisplay">信用卡付款資訊</p>
+                        <div class="sameSty" style="display: flex;">
+                            <div style="padding-top: 11px;">卡片號碼： </div><div class="bookingTextInput tpfield" id="card-number"></div>
+                        </div>
+                        <div class="sameSty" style="display: flex;">
+                            <div style="padding-top: 11px;">過期時間： </div> <div class="bookingTextInput tpfield" id="card-expiration-date"></div>
+                        </div>
+                        <div class="sameSty" style="display: flex;">
+                            <div style="padding-top: 11px;">驗證密碼： </div><div class="bookingTextInput tpfield" id="card-ccv"></div>
+                        </div>
+                        <div class="bookingSeparateLine"></div>
                     </div>
-                    <div class="sameSty" style="display: flex;">
-                        <div style="padding-top: 11px;">驗證密碼： </div><div class="bookingTextInput tpfield" id="card-ccv"></div>
+                    <div style="text-align: end;">
+                        <div class="totalPrice">總價：新台幣 <span id="totalPrice"></span> 元</div>
+                        <div><button id="confrimBtn" class="confirmBooking" type="submit">確認訂購並付款</button></div>
                     </div>
-                    <div class="bookingSeparateLine"></div>
-                </div>
-                <div style="text-align: end;">
-                    <div class="totalPrice">總價：新台幣 <span id="totalPrice"></span> 元</div>
-                    <div><button id="confrimBtn" class="confirmBooking" type="submit">確認訂購並付款</button></div>
-                </div>
+                </form>
             </div>
         </div>        
    </div><br><br>
@@ -80,6 +85,6 @@
    </script>
     <script src="{{ url_for('static', filename='./js/common.js') }}"></script>
     <script src="{{ url_for('static', filename='./js/booking.js') }}"></script>
-    <footer class="footer">COPYRIGHT © 2022 台北一日遊</footer>
+    <footer class="footer">COPYRIGHT © 2023 台北一日遊</footer>
 </body>
 </html>

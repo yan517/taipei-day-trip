@@ -4,6 +4,11 @@ function setBookingAttractionsData(data){
     attraction = data;
 }
 
+let loader = document.getElementById("preloader");
+window.addEventListener("load",()=>{
+    loader.style.display = "none";
+})
+
 const getBookingAttractions = async (value)=> {
     console.log(value);
     if(value){
@@ -112,6 +117,10 @@ function createBookingSection(data,userEmail,userid,userName){
         bookingSections.appendChild(section);
         bookingSections.appendChild(separateLine);
     }
+    let contactName = document.querySelector("#contactName");
+    contactName.value = userName;
+    let contactEmail = document.querySelector("#contactEmail");
+    contactEmail.value = userEmail;
     let totalPrice = document.getElementById("totalPrice");
     totalPrice.textContent = sum;
 }

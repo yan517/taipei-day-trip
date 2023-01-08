@@ -6,6 +6,12 @@ let loading = true;
 
 getUserStatus(null,null);
 //--------------------------------- Load More ----------------------------------
+const opition = {
+    root: null,
+    rootMargin: "30px",
+    threshold: 0.5
+};
+
 const callback = async ([entry]) => {
 	console.log("footer");
 	console.log(loading);
@@ -29,7 +35,7 @@ const callback = async ([entry]) => {
 		else getPageArractionsData(page);
 	}
 } 
-let observer = new IntersectionObserver(callback)
+let observer = new IntersectionObserver(callback,opition);
 observer.observe(loadingObserver)
 
 const loadMoreArractionsDatabyCategory = (category,page) => fetch(`http://18.181.123.151:3000/api/attractions?page=${page}&keyword=${category}`)
