@@ -5,10 +5,14 @@ from data.api.booking import bookingApp
 from data.api.order import orderApp
 from extensions import db,bcrypt
 from dotenv import load_dotenv
+from flask_cors import CORS, cross_origin
 import os
 
 app=Flask(__name__)
+cors = CORS(app)
+
 load_dotenv()
+app.config['CORS_HEADERS'] = 'Content-Type'
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -21,6 +25,7 @@ bcrypt.init_app(app)
 
 # Pages
 @app.route("/")
+@cross_origin()
 def index():
 	return render_template("index.html", apiaddress = apiaddress)
 @app.route("/attraction/<id>")
