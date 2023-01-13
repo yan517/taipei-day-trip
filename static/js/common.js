@@ -1,12 +1,12 @@
 function getUserStatus(cb,value){
-	const status = async () => await fetch('http://18.181.123.151:3000/api/user/auth')
+	const status = async () => await fetch(`http://${apiaddress}:3000/api/user/auth`)
 	.then((response)=>response.json())
 	.then(((data) => {
         console.log(data);
 		if(data["error"] || data["data"] == null){
 			document.querySelector('#memberPage').style.display = 'none';
 			document.querySelector('#loginSignup').style.display = 'block';	
-            if(cb) window.location.href = "http://18.181.123.151:3000";	
+            if(cb) window.location.href = `http://${apiaddress}:3000`;	
 		}
 		else{
 			document.querySelector('#memberPage').style.display = 'block';
@@ -69,7 +69,7 @@ loginBtn.addEventListener('click',(event) => {
     let name = null;
     if (document.querySelector('#username').value)
         name = document.querySelector('#username').value;   
-    const login = async () => await fetch('http://18.181.123.151:3000/api/user/auth',{
+    const login = async () => await fetch(`http://${apiaddress}:3000/api/user/auth`,{
         method:'PUT',
         headers:{
             'Content-Type': 'application/json'
@@ -89,7 +89,7 @@ loginBtn.addEventListener('click',(event) => {
             }, 2000);
         }
     })
-    const createAc = async () => await fetch('http://18.181.123.151:3000/api/user',{
+    const createAc = async () => await fetch(`http://${apiaddress}:3000/api/user`,{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'
@@ -127,7 +127,7 @@ loginBtn.addEventListener('click',(event) => {
 
 const appointment = document.getElementById('appointment');
 appointment.addEventListener('click', (event) =>{
-    const status = () => fetch('http://18.181.123.151:3000/api/user/auth')
+    const status = () => fetch(`http://${apiaddress}:3000/api/user/auth`)
 	.then((response)=>response.json())
 	.then((data =>{
 		if(data["error"] || data["data"] == null){
@@ -135,12 +135,12 @@ appointment.addEventListener('click', (event) =>{
             loginSignUp.click();
 		}
 		else{
-			window.location.href = "http://18.181.123.151:3000/booking";
+			window.location.href = `http://${apiaddress}:3000/booking`;
 		}
 	}));
 	status();
 })
 
 function backTohomePage(){
-    window.location.href = `http://18.181.123.151:3000/`;
+    window.location.href = `http://${apiaddress}:3000/`;
 }

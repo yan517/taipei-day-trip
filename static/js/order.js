@@ -1,5 +1,4 @@
 let number;
-
 function setNumber(num) {
     number = num;
 }
@@ -8,7 +7,7 @@ function getNumber() {
     return number;
 }
 
-const orderData = (number) => fetch(`http://18.181.123.151:3000/api/order/${number}`)
+const orderData = (number) => fetch(`http://${apiaddress}:3000/api/order/${number}`)
     .then((response)=>response.json())
 
 async function getOrderData(number) {

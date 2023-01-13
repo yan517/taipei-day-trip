@@ -13,7 +13,7 @@
                 <ul class="navRightCorner">
                     <li id="appointment"><a href="#">預定行程</a></li>
                     <li id="loginSignup"><a href="#">登入/註冊</a></li>
-                    <li id="memberPage"><a href="http://18.181.123.151:3000/member">會員中心</a></li>
+                    <li id="memberPage"><a href="http://{{ apiaddress }}:3000/member">會員中心</a></li>
                 </ul>
             </div>
             <div id="signInUpFrame">
@@ -64,6 +64,7 @@
             </div>
             <br><br>
             <footer class="footer" style="height: 100%;">COPYRIGHT © 2023 台北一日遊</footer>
+    <script type="text/javascript">let apiaddress ='{{ apiaddress }}';</script>        
     <script src="{{ url_for('static', filename='./js/common.js') }}"></script>    
     <script src="{{ url_for('static', filename='./js/order.js') }}"></script>
     <script type="text/javascript">

@@ -10,7 +10,7 @@ const getOrders = async (value)=> {
         userid = value["data"].id;
         userName.textContent = value["data"].name;
         userEmail.textContent = value["data"].email;
-        fetch(`http://18.181.123.151:3000/api/ordered?id=${userid}`)
+        fetch(`http://${apiaddress}:3000/api/ordered?id=${userid}`)
         .then((response)=>response.json())
         .then((data)=> {
             let order_table = document.querySelector(".order-container");
@@ -20,7 +20,7 @@ const getOrders = async (value)=> {
                 for (let i = 0; i<result.length; i++){
                     console.log(result[i]);
                     let aTag = document.createElement("a");
-                    aTag.href = `http://18.181.123.151:3000/thankyou?number=${result[i].order_number}`;
+                    aTag.href = `http://${apiaddress}:3000/thankyou?number=${result[i].order_number}`;
                     aTag.textContent = result[i].order_number;
                     aTag.className = "order-item";
                     order_table.appendChild(aTag);
@@ -44,14 +44,14 @@ const getOrders = async (value)=> {
             }
         });
     }else{
-        window.location.href = "http://18.181.123.151:3000";
+        window.location.href = `http://${apiaddress}:3000`;
     }
 }
 getUserStatus(getOrders,null);
 
 const logout = document.getElementById('logout');
 logout.addEventListener('click', (event) =>{
-    const logO = async () => await fetch('http://18.181.123.151:3000/api/user/auth',{
+    const logO = async () => await fetch(`http://${apiaddress}:3000/api/user/auth`,{
         method:'DELETE' 
     }).then((response) => response.json())
     .then(data=>{

@@ -38,10 +38,10 @@ const callback = async ([entry]) => {
 let observer = new IntersectionObserver(callback,opition);
 observer.observe(loadingObserver)
 
-const loadMoreArractionsDatabyCategory = (category,page) => fetch(`http://18.181.123.151:3000/api/attractions?page=${page}&keyword=${category}`)
+const loadMoreArractionsDatabyCategory = (category,page) => fetch(`http://${apiaddress}:3000/api/attractions?page=${page}&keyword=${category}`)
 .then((response)=> response.json())
 
-const getArractionsData = page => fetch('http://18.181.123.151:3000/api/attractions?page='+page)
+const getArractionsData = page => fetch(`http://${apiaddress}:3000/api/attractions?page=`+page)
 	.then((response)=> response.json())
 
 async function getPageArractionsData(pageNum) {
@@ -63,7 +63,7 @@ function initLoad(){
 initLoad();
 
 //--------------------------------- Fectch Category Data ----------------------------------
-const categoryData = () => fetch('http://18.181.123.151:3000/api/categories')
+const categoryData = () => fetch(`http://${apiaddress}:3000/api/categories`)
 	.then((response) => response.json())
 
 async function getcategoryData() {
@@ -79,7 +79,7 @@ async function getcategoryData() {
 getcategoryData();
 
 //--------------------------------- Search By Keyword ----------------------------------
-const getArractionsDatabyCat = (category) => fetch(`http://18.181.123.151:3000/api/attractions?page=0&keyword=${category}`)
+const getArractionsDatabyCat = (category) => fetch(`http://${apiaddress}:3000/api/attractions?page=0&keyword=${category}`)
 .then((response)=> response.json())
 
 async function searchByCategory(){
@@ -132,7 +132,7 @@ function createLargerDom(name,mrt,url,category,id){
 	let row = document.getElementById("largerCon");
 	let lgDiv = document.createElement("div");
 	lgDiv.addEventListener("click", ()=>{
-		window.location.href = `http://18.181.123.151:3000/attraction/${id}`;
+		window.location.href = `http://${apiaddress}:3000/attraction/${id}`;
 	});
 	lgDiv.className = "grid-item-4";
 	let lgimg = document.createElement('img');

@@ -21,7 +21,7 @@ function getAttractionInfo() {
     return AttractionInfo;
 }
 
-const attractionData = (id) => fetch(`http://18.181.123.151:3000/api/attraction/${id}`)
+const attractionData = (id) => fetch(`http://${apiaddress}:3000/api/attraction/${id}`)
     .then((response)=>response.json())
 
 async function getArractionsData(id) {
@@ -105,7 +105,7 @@ for (let i = 0; i < radiobtn.length; i++) {
 const startToBook = document.getElementById('startToBook');
 startToBook.addEventListener('click', (event) =>{
     
-    const status = () => fetch('http://18.181.123.151:3000/api/user/auth')
+    const status = () => fetch(`http://${apiaddress}:3000/api/user/auth`)
 	.then((response)=>response.json())
 	.then((data =>{
 		if(data["error"] || data["data"] == null){
@@ -137,7 +137,7 @@ startToBook.addEventListener('click', (event) =>{
 })
 
 function createBooking(attractionId,date,bookingTime,price,userId,email){
-    const create = async () => await fetch('http://18.181.123.151:3000/api/booking',{
+    const create = async () => await fetch(`http://${apiaddress}:3000/api/booking`,{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'
@@ -146,7 +146,7 @@ function createBooking(attractionId,date,bookingTime,price,userId,email){
     }).then((response) => response.json())
     .then(data=>{
         if(data["ok"]){
-            window.location.href = "http://18.181.123.151:3000/booking";
+            window.location.href = `http://${apiaddress}:3000/booking`;
         }else{
             alert(data["message"]);
         }
