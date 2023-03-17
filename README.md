@@ -3,8 +3,6 @@
 Taipei-day-trip is an E-Commerce website that provides information on tourist attractions in Taipei.
 The project is built with JavaScript and Python Flask.
 
-<br/>
-
 ## Table of Contents
 
 - [Main Features](#main-features)
@@ -18,8 +16,6 @@ The project is built with JavaScript and Python Flask.
 - [Frontend Technique](#frontend-technique)
 - [API Doc](#api-doc)
 - [Contact](#contact)
-
-<br/>
 
 ## Main Features
 
@@ -75,4 +71,4 @@ The project is built with JavaScript and Python Flask.
 👩Lam Yan Yan Cindy
 <br/>
 
-<img src="https://edent.github.io/SuperTinyIcons/images/svg/gmail.svg" width="125" title="Gmail" />Email: yanlyy517@gmail.com
+<img src="https://edent.github.io/SuperTinyIcons/images/svg/gmail.svg" width="25" title="Gmail" />Email: yanlyy517@gmail.com
