@@ -69,7 +69,7 @@ The project is built with JavaScript and Python Flask.
 
 ## Contact
 
-👩 Lam Yan Yan Cindy
+👩‍💻 Cindy Lam
 <br/>
 
-<img src="https://edent.github.io/SuperTinyIcons/images/svg/gmail.svg" width="20" title="Gmail" /> Email: yanlyy517@gmail.com
+📬 Email: yanlyy517@gmail.com
