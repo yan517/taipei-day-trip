@@ -1,6 +1,7 @@
 # Taipei-Day-Trip
 
-Taipei-day-trip is an E-Commerce website that provides information on tourist attractions in Taipei.
+Taipei-day-trip is an E-Commerce website that provides information on tourist attractions in Taipei. 
+<br/>
 The project is built with JavaScript and Python Flask.
 
 ## Table of Contents
