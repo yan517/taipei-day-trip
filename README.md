@@ -8,6 +8,10 @@ The project is built with JavaScript and Python Flask.
 
 https://user-images.githubusercontent.com/111167537/226122596-8feeb63d-d066-4324-bc60-306d3713958a.mp4
 
+|Account|Password|
+|---|---|
+|test@gmail.com|123456|
+
 ## Table of Contents
 
 - [Main Features](#main-features)
