@@ -7,7 +7,7 @@ The project is built with JavaScript and Python Flask.
 ![image](https://user-images.githubusercontent.com/111167537/226122612-94c58187-37d7-4a5c-90f9-9817d5e485a2.png)
 
 https://user-images.githubusercontent.com/111167537/226122596-8feeb63d-d066-4324-bc60-306d3713958a.mp4
-
+<br/>
 |Account|Password|
 |---|---|
 |test@gmail.com|123456|
