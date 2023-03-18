@@ -15,7 +15,7 @@ const getBookingAttractions = async (value)=> {
         let userEmail = value["data"].email;
         userid = value["data"].id;
         let userName = value["data"].name;
-        fetch(`http://${apiaddress}:3000/api/booking?userId=${userid}`)
+        fetch(`/api/booking?userId=${userid}`)
         .then((response)=>response.json())
         .then((data)=> {
             console.log(data);
@@ -38,7 +38,7 @@ const getBookingAttractions = async (value)=> {
             }
         });
     }else{
-        window.location.href = `http://${apiaddress}:3000`;
+        window.location.href = `/`;
     }
 }
 let value = getUserStatus(getBookingAttractions,null);
@@ -94,7 +94,7 @@ function createBookingSection(data,userEmail,userid,userName){
         let deleteBtn = document.createElement("button");
         deleteBtn.className ="bookingDeleteBtn";
         deleteBtn.addEventListener("click", ()=>{
-            const deleteBookingItem = async () => await fetch(`http://${apiaddress}:3000/api/booking`,{
+            const deleteBookingItem = async () => await fetch(`/api/booking`,{
                 method:'DELETE',
                 headers:{
                     'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ function createBookingSection(data,userEmail,userid,userName){
             }).then((response) => response.json())
             .then(data=>{
                 if(data["ok"]){
-                    window.location.href = `http://${apiaddress}:3000/booking`;
+                    window.location.href = `/booking`;
                 }
             })
             deleteBookingItem();
@@ -160,7 +160,7 @@ confrimBtn.addEventListener('click', (event) => {
 })       
 
 function pay(prime,user_id,totalPrice,attraction,contactName,contactEmail,phone){
-    const create = async () => await fetch(`http://${apiaddress}:3000/api/orders`,{
+    const create = async () => await fetch(`/api/orders`,{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'
@@ -183,10 +183,10 @@ function pay(prime,user_id,totalPrice,attraction,contactName,contactEmail,phone)
     }).then((response) => response.json())
     .then(data=>{
         if (data["data"]){
-            window.location.href = `http://${apiaddress}:3000/thankyou?number=${data["data"].number}`;
+            window.location.href = `/thankyou?number=${data["data"].number}`;
         }else{
             alert(data["message"])
-            window.location.href = `http://${apiaddress}:3000`;
+            window.location.href = `/`;
         }
     })
     create();

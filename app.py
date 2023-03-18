@@ -49,4 +49,4 @@ app.register_blueprint(bookingApp, url_prefix='')
 app.register_blueprint(orderApp, url_prefix='')
 
 #app.run(port=3000)		
-app.run(host='0.0.0.0',port=3000)		
+app.run(host='0.0.0.0',port=3001)	

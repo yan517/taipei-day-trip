@@ -7,7 +7,7 @@ function getNumber() {
     return number;
 }
 
-const orderData = (number) => fetch(`http://${apiaddress}:3000/api/order/${number}`)
+const orderData = (number) => fetch(`/api/order/${number}`)
     .then((response)=>response.json())
 
 async function getOrderData(number) {
