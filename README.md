@@ -62,7 +62,7 @@ https://user-images.githubusercontent.com/111167537/226126579-85d438b5-8487-409d
 - Git/GitHub
 
 ### Architecture
-
+![image](https://user-images.githubusercontent.com/111167537/226390649-17eac205-3538-496f-b9d4-05bf10805004.png)
 <br/>
 
 ### Database Schema
