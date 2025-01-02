@@ -8,7 +8,7 @@ The project is built with JavaScript and Python Flask.
 |---|---|
 |test@gmail.com|123456|
 
-|Testing TapPay|CVV|
+|Testing Tappay|CVV|
 |---|---|
 |4242 4242 4242 4242|123|
 
