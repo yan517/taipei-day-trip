@@ -8,6 +8,10 @@ The project is built with JavaScript and Python Flask.
 |---|---|
 |test@gmail.com|123456|
 
+|Testing TapPay|CVV|
+|---|---|
+|4242 4242 4242 4242|123|
+
 ![image](https://user-images.githubusercontent.com/111167537/226122612-94c58187-37d7-4a5c-90f9-9817d5e485a2.png)
 
 https://user-images.githubusercontent.com/111167537/226126579-85d438b5-8487-409d-a86f-4c7747906302.mp4
